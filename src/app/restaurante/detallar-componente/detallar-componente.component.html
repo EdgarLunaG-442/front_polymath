@@ -1,0 +1,113 @@
+<div>
+    <div>
+        <div class="cont_modal cont_modal_active">
+            <div class="cont_photo">
+                <div class="cont_img_back"><img src="{{restaurante.urlFoto}}" /></div>
+                
+                <div class="cont_detalles">
+                    <h3>{{restaurante.nombre}}</h3>
+                    <p>{{restaurante.ciudad}}</p>
+                </div>
+            </div>
+            <div class="cont_text_ingredients">
+                <div class="cont_over_hidden">
+                    <div class="cont_text_det_preparation">
+                        
+                        <div class="cont_text_det_preparation">
+                            <div class="cont_title_preparation">
+                                <p>STEP 2</p>
+                            </div>
+                            <div class="cont_info_preparation">
+                                <p>{{restaurante.descripcion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <form class="modal-content" [formGroup]="createReservaForm" (ngSubmit)="crearReserva()">
+        <div>
+            <div class="row register-form">
+                <div class="col-md-8 offset-md-2">
+                    <div class="custom-form p-0 ml-0 mr-0">
+                        <div class="form-row form-group">
+                            <div class="col-sm-4 label-column">
+                                <label class="col-form-label" for="name-input-field">año</label>
+                            </div>
+                            <div class="col-sm-6 input-column p-0" >
+                                <input type="text" class="form-control" formControlName="nombre" placeholder="año" />
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="row register-form">
+                <div class="col-md-8 offset-md-2">
+                    <div class="custom-form p-0 ml-0 mr-0">
+                        <div class="form-row form-group">
+                            <div class="col-sm-4 label-column">
+                                <label class="col-form-label" for="name-input-field">mes</label>
+                            </div>
+                            <div class="col-sm-6 input-column p-0" >
+                                <input type="text" class="form-control" formControlName="descripcion" placeholder="mes" />
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="row register-form">
+                <div class="col-md-8 offset-md-2">
+                    <div class="custom-form p-0 ml-0 mr-0">
+                        <div class="form-row form-group">
+                            <div class="col-sm-4 label-column">
+                                <label class="col-form-label" for="name-input-field">dia</label>
+                            </div>
+                            <div class="col-sm-6 input-column p-0" >
+                                <input type="text" class="form-control" formControlName="ciudad" placeholder="dia" />
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="row register-form">
+                <div class="col-md-8 offset-md-2">
+                    <div class="custom-form p-0 ml-0 mr-0">
+                        <div class="form-row form-group">
+                            <div class="col-sm-4 label-column">
+                                <label class="col-form-label" for="name-input-field">hora</label>
+                            </div>
+                            <div class="col-sm-6 input-column p-0" >
+                                <input type="text" class="form-control" formControlName="urlFoto" placeholder="hora" />
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-success w-100 mb-3">Añadir reserva</button>
+    </form>
+
+    <button type="button" class="btn btn-outline-danger w-100 mb-3" (click)="eliminarRest(idRestaurante)">Eliminar Restaurante</button>
+	<button type="button" class="btn w-100" [ngClass]="{'btn-outline-primary':!hoy,'bg-primary':hoy}" (click)='mostrarHoy()'>Mostrar reservas de hoy</button>
+</div>
+
+
+<table class="table mt-5">
+	<thead>
+	  <tr>
+		<th scope="col">#</th>
+		<th scope="col">reservas</th>
+	  </tr>
+	</thead>
+	<tbody class="mb-5">
+	  <tr *ngFor="let reserva of totalReservas, index as i">
+		<th scope="row">{{i+1}}</th>
+		<td>{{reserva}}</td>
+	  </tr>
+	</tbody>
+  </table>
